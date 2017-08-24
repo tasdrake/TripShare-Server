@@ -1,6 +1,6 @@
 const express = require('express');
-const users = require('users');
-const trips = require('trips');
+const users = require('./routes/users');
+const trips = require('./routes/trips');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -21,4 +21,5 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.json(err);
 });
+app.listen(3000);
 module.exports = app;

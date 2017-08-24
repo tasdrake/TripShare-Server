@@ -4,7 +4,11 @@ const knex = require('../knex');
 
 router.get('/', (req, res) => {
   knex('trips')
-    .get('*')
+    .select([
+      'name',
+      'completed',
+      'image_url'
+    ])
     .then(trips => res.send(trips))
     .catch(err => console.log(err));
 });
@@ -13,7 +17,11 @@ router.get('/:id', (req, res) => {
   const id = req.params.id;
 
   knex('trips')
-    .get('*')
+    .select([
+      'name',
+      'completed',
+      'image_url'
+    ])
     .where('id', id)
     .then(trip => res.send(trip))
     .catch(err => console.log(err));
@@ -23,8 +31,12 @@ router.post('/', (req, res) => {
   const body = req.body;
 
   knex('trips')
-    .input(body)
-    .returning('*')
+    .insert(body)
+    .returning([
+      'name',
+      'completed',
+      'image_url'
+    ])
     .then(newTrip => res.send(newTrip))
     .catch(err => console.log(err));
 });
@@ -35,7 +47,11 @@ router.patch('/:id', (req, res) => {
 
   knex('trips')
     .update(body)
-    .returning('*')
+    .returning([
+      'name',
+      'completed',
+      'image_url'
+    ])
     .where('id', id)
     .then(updatedTrip => res.send(updatedTrip))
     .catch(err => console.log(err));
@@ -46,7 +62,11 @@ router.delete('/:id', (req, res) => {
 
   knex('trips')
     .del()
-    .returning('*')
+    .returning([
+      'name',
+      'completed',
+      'image_url'
+    ])
     .where('id', id)
     .then(deletedTrip => res.send(deletedTrip))
     .catch(err => console.log(err));
