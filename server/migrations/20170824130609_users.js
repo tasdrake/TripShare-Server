@@ -6,7 +6,6 @@ exports.up = (knex) => {
     table.boolean('paid').defaultTo(false);
     table.string('image_url').defaultTo('https://cdn.pixabay.com/photo/2017/02/25/22/04/user-icon-2098873_1280.png');
     table.integer('trip_id').index().references('id').inTable('trips').onDelete('cascade').notNull();
-    // table.foreign('trip_id').references('trips.trip_id');
   });
 };
 
