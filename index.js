@@ -1,6 +1,7 @@
 const express = require('express');
 const users = require('./routes/users');
 const trips = require('./routes/trips');
+const total = require ('./routes/total');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -8,6 +9,7 @@ app.use(bodyParser.json());
 
 app.use('/users', users);
 app.use('/trips', trips);
+app.use('/total', total);
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');
