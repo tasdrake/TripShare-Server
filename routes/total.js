@@ -15,8 +15,9 @@ router.get('/:id', (req, res) => {
     ])
     .then(people => {
       let total = 0;
-      people.map(e => total += e.amount);
+      people.map(e => total += e.amount_spent);
       const individualCost = total / people.length;
+      people.map()
       res.send(people);
     })
     .catch(err => console.error(err));

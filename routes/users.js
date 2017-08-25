@@ -6,7 +6,8 @@ router.get('/', (req, res) => {
   knex('users')
     .select([
       'name',
-      'amount',
+      'amount_spent',
+      'amount_owed',
       'paid',
       'image_url',
     ])
@@ -20,7 +21,8 @@ router.get('/:id', (req, res) => {
   knex('users')
     .select([
       'name',
-      'amount',
+      'amount_spent',
+      'amount_owed',
       'paid',
       'image_url'
     ])
@@ -36,7 +38,8 @@ router.post('/', (req, res) => {
     .insert(body)
     .returning([
       'name',
-      'amount',
+      'amount_spent',
+      'amount_owed',
       'paid',
       'image_url'
     ])
@@ -52,7 +55,8 @@ router.patch('/:id', (req, res) => {
     .update(body)
     .returning([
       'name',
-      'amount',
+      'amount_spent',
+      'amount_owed',
       'paid',
       'image_url'
     ])
@@ -68,7 +72,8 @@ router.delete('/:id', (req, res) => {
     .del()
     .returning([
       'name',
-      'amount',
+      'amount_spent',
+      'amount_owed',
       'paid',
       'image_url'
     ])
