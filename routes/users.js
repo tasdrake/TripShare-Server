@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
       'name',
       'amount',
       'paid',
-      'image_url'
+      'image_url',
     ])
     .then(users => res.send(users))
     .catch(err => console.log(err));
