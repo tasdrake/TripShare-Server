@@ -5,6 +5,7 @@ const knex = require('../knex');
 router.get('/', (req, res) => {
   knex('trips')
     .select([
+      'id',
       'name',
       'completed',
       'image_url'
