@@ -4,6 +4,7 @@ const trips = require('./routes/trips');
 const total = require ('./routes/total');
 const bodyParser = require('body-parser');
 const app = express();
+const PORT = process.env.PORT
 
 app.use(bodyParser.json());
 
@@ -23,5 +24,8 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.json(err);
 });
-app.listen(3000);
+
+app.listen(PORT || 3000, () => {
+  console.log(`listening on port ${PORT || 3000}`);
+});
 module.exports = app;
