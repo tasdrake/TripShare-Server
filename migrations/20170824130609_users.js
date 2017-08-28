@@ -2,7 +2,7 @@ exports.up = (knex) => {
   return knex.schema.createTable('users', table => {
     table.increments('id');
     table.string('name').notNullable();
-    table.integer('phone').notNullable();
+    table.string('phone', 10).notNullable();
     table.decimal('amount_spent').defaultTo(0);
     table.decimal('amount_owed').defaultTo(0);
     table.boolean('paid').defaultTo(false);
