@@ -65,7 +65,6 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  console.error(body, id);
   knex('users')
     .update(body)
     .returning([
