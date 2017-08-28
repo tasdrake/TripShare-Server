@@ -4,7 +4,7 @@ const trips = require('./routes/trips');
 const total = require ('./routes/total');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 

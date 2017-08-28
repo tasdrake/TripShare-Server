@@ -16,7 +16,7 @@ router.get('/rough/:id', (req, res) => {
     .then(people => {
       let total = 0;
       people.map(e => total += Number(e.amount_spent));
-      const individualCost = total / people.length;
+      let individualCost = total / people.length;
       let individualTotal = 0; // check how close to the total
       people.map(e => {
         if (e.amount_spent > individualCost) {
@@ -32,6 +32,7 @@ router.get('/rough/:id', (req, res) => {
           .returning('*')
           .catch(err => console.error(err));
       });
+      individualCost = Math.ceil(individualCost);
       people.unshift({ total, individualCost, individualTotal });
       res.send(people);
     })
