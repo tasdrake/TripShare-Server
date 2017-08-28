@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
       'amount_owed',
       'paid',
       'image_url',
+      'phone',
     ])
     .then(users => res.send(users))
     .catch(err => console.error(err));
@@ -24,7 +25,8 @@ router.get('/:id', (req, res) => {
       'amount_spent',
       'amount_owed',
       'paid',
-      'image_url'
+      'image_url',
+      'phone',
     ])
     .where('id', id)
     .then(user => res.send(user))
@@ -40,7 +42,8 @@ router.get('/trip/:id', (req, res) => {
     .select([
       'users.id',
       'users.name',
-      'users.image_url'
+      'users.image_url',
+      'phone',
     ])
     .then(users => res.send(users))
     .catch(err => console.error(err));
