@@ -12,7 +12,8 @@ router.get('/rough/:id', (req, res) => {
       'users.name',
       'amount_spent',
       'amount_owed',
-      'paid'
+      'paid',
+      'phone',
     ])
     .then(people => {
       let total = 0;
@@ -50,7 +51,8 @@ router.get('/exact/:id', (req, res) => {
       'users.name',
       'amount_spent',
       'amount_owed',
-      'paid'
+      'paid',
+      'phone',
     ])
     .then(people => {
       let total = 0;
