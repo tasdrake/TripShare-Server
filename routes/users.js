@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       'image_url',
     ])
     .then(users => res.send(users))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.get('/:id', (req, res) => {
@@ -28,7 +28,22 @@ router.get('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(user => res.send(user))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
+});
+
+router.get('/trip/:id', (req, res) => {
+  const id = req.params.id;
+
+  knex('trips')
+    .where('trips.id', id)
+    .join('users', 'trips.id', 'users.trip_id')
+    .select([
+      'users.id',
+      'users.name',
+      'users.image_url'
+    ])
+    .then(users => res.send(users))
+    .catch(err => console.error(err));
 });
 
 router.post('/', (req, res) => {
@@ -44,13 +59,13 @@ router.post('/', (req, res) => {
       'image_url'
     ])
     .then(newUser => res.send(newUser))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.patch('/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  console.log(body, id);
+  console.error(body, id);
   knex('users')
     .update(body)
     .returning([
@@ -62,7 +77,7 @@ router.patch('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(updatedUser => res.send(updatedUser))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.delete('/:id', (req, res) => {
@@ -79,7 +94,7 @@ router.delete('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(deletedUser => res.send(deletedUser))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 module.exports = router;
