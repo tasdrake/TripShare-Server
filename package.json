@@ -10,10 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.17.2",
     "cookie-session": "^1.3.1",
     "express": "^4.15.4",
     "knex": "^0.13.0",
+    "nodemon": "^1.11.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "pg": "^7.2.0"
