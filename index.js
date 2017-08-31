@@ -4,10 +4,10 @@ const trips = require('./routes/trips');
 const total = require ('./routes/total');
 const bodyParser = require('body-parser');
 const app = express();
-import passport from 'passport';
-import FacebookStrategy from 'passport-facebook';
+const passport = require('passport');
+const FacebookStrategy = require('passport-facebook');
 const PORT = process.env.PORT;
-import { facebook } from './config';
+const { facebook } = require('./config');
 passport.serializeUser((user, done) => done(null, user));
 
 // Deserialize user from the sessions
@@ -26,6 +26,15 @@ passport.use(new FacebookStrategy(facebook,
     => done(null, transformFacebookProfile(profile._json))
 ));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/auth/facebook' }),
+  // Redirect user back to the mobile app using Linking with a custom protocol OAuthLogin
+  (req, res) => res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user)));
 
 app.use(bodyParser.json());
 
