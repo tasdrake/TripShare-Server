@@ -4,7 +4,12 @@ const trips = require('./routes/trips');
 const total = require ('./routes/total');
 const bodyParser = require('body-parser');
 const app = express();
+import passport from 'passport';
+import FacebookStrategy from 'passport-facebook';
 const PORT = process.env.PORT;
+import { facebook } from './config';
+console.log(facebook);
+
 
 app.use(bodyParser.json());
 
