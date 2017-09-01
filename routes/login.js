@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 
-router.post('/', (req, res) => {
-  const name = req.body.name;
-  console.log(req.body);
+router.post('/:name', (req, res) => {
+  const name = req.params.name;
+  console.log(name);
   knex('admin')
     .select('*')
     .where('name', name)
