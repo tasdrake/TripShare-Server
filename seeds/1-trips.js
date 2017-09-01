@@ -5,12 +5,14 @@ exports.seed = (knex) => {
         id: 1,
         name: 'Coachella',
         completed: false,
-        image_url: 'https://cdn.pixabay.com/photo/2016/07/30/00/03/mountain-road-1556177_1280.jpg'
+        image_url: 'https://cdn.pixabay.com/photo/2016/07/30/00/03/mountain-road-1556177_1280.jpg',
+        admin_id: 1,
       }, {
         id: 2,
         name: 'Eclipse Adventure',
         completed: false,
-        image_url: 'https://cdn.pixabay.com/photo/2016/07/30/00/03/mountain-road-1556177_1280.jpg'
+        image_url: 'https://cdn.pixabay.com/photo/2016/07/30/00/03/mountain-road-1556177_1280.jpg',
+        admin_id: 1,
       }
     ]);
   }).then(() => {

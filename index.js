@@ -38,6 +38,21 @@ app.get('/auth/facebook/callback',
 
 app.use(bodyParser.json());
 
+app.get('/login', (req, res, next) => {
+  const name = req.body.name;
+  const body = req.body;
+  knex('admin')
+    .select('*')
+    .where('name', name)
+    .then(admin => {
+      if (admin.length) return res.send(admin);
+      knex('admin')
+        .insert(body)
+        .returning('*')
+        .then(admin => res.send(admin))
+    })
+});
+
 app.use('/users', users);
 app.use('/trips', trips);
 app.use('/total', total);
