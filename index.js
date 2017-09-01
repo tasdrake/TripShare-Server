@@ -38,7 +38,7 @@ app.get('/auth/facebook/callback',
 
 app.use(bodyParser.json());
 
-app.use('/login', login)
+app.use('/login', login);
 app.use('/users', users);
 app.use('/trips', trips);
 app.use('/total', total);
