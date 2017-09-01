@@ -7,7 +7,7 @@ const app = express();
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook');
 const PORT = process.env.PORT;
-const knex = require('../knex');
+const knex = require('./knex');
 const { facebook } = require('./config');
 passport.serializeUser((user, done) => done(null, user));
 
@@ -39,19 +39,19 @@ app.get('/auth/facebook/callback',
 
 app.use(bodyParser.json());
 
-// app.post('/login', (req, res) => {
-//   const name = req.body.name;
-//   knex('admin')
-//     .select('*')
-//     .where('name', name)
-//     .then(admin => {
-//       if (admin.length) return res.send(admin);
-//       knex('admin')
-//         .insert(name)
-//         .returning('*')
-//         .then(admin => res.send(admin));
-//     });
-// });
+app.post('/login', (req, res) => {
+  const name = req.body.name;
+  knex('admin')
+    .select('*')
+    .where('name', name)
+    .then(admin => {
+      if (admin.length) return res.send(admin);
+      knex('admin')
+        .insert(name)
+        .returning('*')
+        .then(admin => res.send(admin));
+    });
+});
 
 app.use('/users', users);
 app.use('/trips', trips);
