@@ -38,7 +38,7 @@ app.get('/auth/facebook/callback',
 
 app.use(bodyParser.json());
 
-app.get('/login', (req, res, next) => {
+app.post('/login', (req, res, next) => {
   const name = req.body.name;
   const body = req.body;
   knex('admin')
