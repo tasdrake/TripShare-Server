@@ -51,7 +51,6 @@ router.get('/trip/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const body = req.body;
-  console.log(body);
   knex('users')
     .insert(body)
     .returning([

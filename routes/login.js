@@ -4,7 +4,6 @@ const knex = require('../knex');
 
 router.post('/:name', (req, res) => {
   const name = req.params.name;
-  console.log(name);
   knex('admin')
     .select('*')
     .where('name', name)

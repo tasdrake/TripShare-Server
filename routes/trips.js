@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       'admin_id'
     ])
     .then(trips => res.send(trips))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.get('/:id', (req, res) => {
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(trip => res.send(trip))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.post('/', (req, res) => {
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
       'image_url'
     ])
     .then(newTrip => res.send(newTrip))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.patch('/:id', (req, res) => {
@@ -56,7 +56,7 @@ router.patch('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(updatedTrip => res.send(updatedTrip))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 router.delete('/:id', (req, res) => {
@@ -71,7 +71,7 @@ router.delete('/:id', (req, res) => {
     ])
     .where('id', id)
     .then(deletedTrip => res.send(deletedTrip))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 module.exports = router;
