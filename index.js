@@ -2,12 +2,12 @@ const express = require('express');
 const users = require('./routes/users');
 const trips = require('./routes/trips');
 const total = require ('./routes/total');
+const login = require ('./routes/login');
 const bodyParser = require('body-parser');
 const app = express();
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook');
 const PORT = process.env.PORT;
-const knex = require('./knex');
 const { facebook } = require('./config');
 passport.serializeUser((user, done) => done(null, user));
 
@@ -38,22 +38,7 @@ app.get('/auth/facebook/callback',
 
 app.use(bodyParser.json());
 
-app.post('/login', (req, res) => {
-  const name = req.body.name;
-  console.log(req.body);
-  knex('admin')
-    .select('*')
-    .where('name', name)
-    .then(admin => {
-      if (admin.length) return res.send(admin);
-      knex('admin')
-        .insert(name)
-        .returning('*')
-        .then(admin => res.send(admin))
-        .catch(err => console.error(err));
-    }).catch(err => console.error(err));
-});
-
+app.use('/login', login)
 app.use('/users', users);
 app.use('/trips', trips);
 app.use('/total', total);
