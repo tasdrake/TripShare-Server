@@ -13,7 +13,6 @@ passport.serializeUser((user, done) => done(null, user));
 
 // Deserialize user from the sessions
 passport.deserializeUser((user, done) => done(null, user));
-console.log(facebook);
 
 const transformFacebookProfile = (profile) => ({
   name: profile.name,
@@ -41,6 +40,7 @@ app.use(bodyParser.json());
 
 app.post('/login', (req, res) => {
   const name = req.body.name;
+  console.log(req.body);
   knex('admin')
     .select('*')
     .where('name', name)
@@ -49,8 +49,9 @@ app.post('/login', (req, res) => {
       knex('admin')
         .insert(name)
         .returning('*')
-        .then(admin => res.send(admin));
-    });
+        .then(admin => res.send(admin))
+        .catch(err => console.error(err));
+    }).catch(err => console.error(err));
 });
 
 app.use('/users', users);
