@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
       'id',
       'name',
       'completed',
-      'image_url'
+      'image_url',
+      'admin_id'
     ])
     .then(trips => res.send(trips))
     .catch(err => console.log(err));
