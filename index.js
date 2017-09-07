@@ -3,6 +3,7 @@ const users = require('./routes/users');
 const trips = require('./routes/trips');
 const total = require ('./routes/total');
 const login = require ('./routes/login');
+const alexa = require('./alexa');
 const bodyParser = require('body-parser');
 const app = express();
 const passport = require('passport');
@@ -42,6 +43,7 @@ app.use('/login', login);
 app.use('/users', users);
 app.use('/trips', trips);
 app.use('/total', total);
+app.use('/alexa', alexa);
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');
