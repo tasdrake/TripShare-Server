@@ -24,15 +24,15 @@ router.post('/', (req, res) => {
       console.log(user[0]);
       console.log('----------------');
       console.log(user[0].id);
+      console.log(user[0].name);
+
       knex('users')
-        .update(user[0].amount_spent)
         .where('name', body.name)
+        // .where('id', user[0].id)
+        .update(user[0].amount_spent)
         .returning([
           'name',
-          'amount_spent',
-          'amount_owed',
-          'paid',
-          'image_url'
+          'amount_spent'
         ])
         .then(newUser => console.log(newUser))
         .catch(err => console.log(err))
