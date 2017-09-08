@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     .select('*')
     .where('name', body.name)
     .then(user => {
-      user[0].amount_spent = Number(req.body.amount) + Number(user[0].amount_spent);
+      user[0].amount_spent = String(Number(req.body.amount) + Number(user[0].amount_spent));
       console.log(user[0]);
       console.log('----------------');
       console.log(user[0].id);
