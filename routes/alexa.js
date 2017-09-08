@@ -19,10 +19,10 @@ router.post('/', (req, res) => {
     .select('*')
     .where('name', body.name)
     .then(user => {
-      user.amount_spent += Number(req.body.amount);
-      console.log(user);
+      user[0].amount_spent = Number(req.body.amount) + Number(user[0].amount_spent);
+      console.log(user[0]);
       console.log('----------------');
-      console.log(user.id);
+      console.log(user[0].id);
       knex('users')
         .update(user)
         .where('id', user.id)
