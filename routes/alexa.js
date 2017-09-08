@@ -25,6 +25,7 @@ router.post('/', (req, res) => {
           'amount_spent',
         ])
         .then(updatedUser => {
+          // fetch()
           res.send(updatedUser);
         })
         .catch(err => console.error(err));
