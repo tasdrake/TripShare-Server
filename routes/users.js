@@ -67,6 +67,7 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
+  console.log(req.body);
   console.log(req.body.amount_spent);
   console.log(typeof req.body.amount_spent);
 
