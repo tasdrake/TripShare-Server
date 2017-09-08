@@ -21,11 +21,11 @@ router.post('/', (req, res) => {
     .where('name', body.name)
     .then(user => {
       user[0].amount_spent = Number(req.body.amount) + Number(user[0].amount_spent);
-      console.log(user[0].amount_spent);
+      console.log(user[0]);
       console.log('----------------');
       console.log(user[0].id);
       knex('users')
-        .update(user[0])
+        .update(user[0].amount_spent)
         .where('name', body.name)
         .returning([
           'name',
