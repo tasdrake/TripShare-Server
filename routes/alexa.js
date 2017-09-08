@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
       knex('users')
         // .update(user[0].amount_spent)
         // .select('*')
-        .update(user[0].amount_spent)
+        .update({amount_spent: user[0].amount_spent})
         .where('id', user[0].id)
         .returning([
           'name',
