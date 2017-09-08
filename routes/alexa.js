@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
       console.log('----------------');
       console.log(user[0].id);
       console.log(user[0].name);
-      console.log(typeof user[0].amount_spent, typeof user[0].amount_owed);
+      console.log(typeof user[0].amount_spent);
 
       // knex('users')
       //   .update(user[0].amount_spent)
@@ -40,15 +40,16 @@ router.post('/', (req, res) => {
 
       knex('users')
         // .update(user[0].amount_spent)
-        // .returning([
-        //   'name',
-        //   'amount_spent',
-        //   'amount_owed',
-        //   'paid',
-        //   'image_url'
-        // ])
-        .select('*')
+        // .select('*')
+        .update(user[0].amount_spent)
         .where('id', user[0].id)
+        .returning([
+          'name',
+          'amount_spent',
+          'amount_owed',
+          'paid',
+          'image_url'
+        ])
         .then(updatedUser => console.log(updatedUser))
         .catch(err => console.error(err));
     });
