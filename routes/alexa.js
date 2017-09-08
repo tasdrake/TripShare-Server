@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 
-router.get('/', (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
-});
+// router.get('/', (req, res) => {
+//   console.log(req.body);
+//   res.send(req.body);
+// });
 
 
 router.post('/', (req, res) => {
@@ -26,7 +26,6 @@ router.post('/', (req, res) => {
         ])
         .then(updatedUser => {
           updatedUser[0].amount = body.amount;
-          console.log(updatedUser);
           res.send(updatedUser);
         })
         .catch(err => console.error(err));

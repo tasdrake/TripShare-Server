@@ -12,7 +12,6 @@ const PORT = process.env.PORT;
 const { facebook } = require('./config');
 passport.serializeUser((user, done) => done(null, user));
 
-// Deserialize user from the sessions
 passport.deserializeUser((user, done) => done(null, user));
 
 const transformFacebookProfile = (profile) => ({
@@ -21,9 +20,7 @@ const transformFacebookProfile = (profile) => ({
 });
 
 passport.use(new FacebookStrategy(facebook,
-  // Gets called when user authorizes access to their profile
   async (accessToken, refreshToken, profile, done)
-    // Return done callback and pass transformed user object
     => done(null, transformFacebookProfile(profile._json))
 ));
 
@@ -34,7 +31,6 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/auth/facebook' }),
-  // Redirect user back to the mobile app using Linking with a custom protocol OAuthLogin
   (req, res) => res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user)));
 
 app.use(bodyParser.json());
