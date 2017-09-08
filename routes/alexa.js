@@ -26,6 +26,7 @@ router.post('/', (req, res) => {
         ])
         .then(updatedUser => {
           updatedUser.amount = body.amount;
+          console.log(updatedUser);
           res.send(updatedUser);
         })
         .catch(err => console.error(err));
