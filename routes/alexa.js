@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
           'amount_spent',
         ])
         .then(updatedUser => {
-          updatedUser.amount = body.amount;
+          updatedUser[0].amount = body.amount;
           console.log(updatedUser);
           res.send(updatedUser);
         })
