@@ -25,17 +25,31 @@ router.post('/', (req, res) => {
       console.log('----------------');
       console.log(user[0].id);
       console.log(user[0].name);
+      console.log(typeof user[0].amount_spent, typeof user[0].amount_owed);
+
+      // knex('users')
+      //   .update(user[0].amount_spent)
+      //   .where('name', body.name)
+      //   // .where('id', user[0].id)
+      //   // .returning([
+      //   //   'name',
+      //   //   'amount_spent'
+      //   // ])
+      //   // .then(newUser => console.log(newUser))
+      //   // .catch(err => console.log(err))
 
       knex('users')
-        .where('name', body.name)
-        // .where('id', user[0].id)
         .update(user[0].amount_spent)
-        // .returning([
-        //   'name',
-        //   'amount_spent'
-        // ])
-        // .then(newUser => console.log(newUser))
-        // .catch(err => console.log(err))
+        .returning([
+          'name',
+          'amount_spent',
+          'amount_owed',
+          'paid',
+          'image_url'
+        ])
+        .where('id', user[0].id)
+        .then(updatedUser => res.send(updatedUser))
+        .catch(err => console.error(err));
     });
 });
 
