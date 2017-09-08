@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const body = req.body;
+  console.log(req.body);
   body.name = body.name[0].toUpperCase() + body.name.slice(1);
   body.trip = body.trip[0].toUpperCase() + body.trip.slice(1);
   console.log(body);
