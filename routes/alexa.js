@@ -24,8 +24,8 @@ router.post('/', (req, res) => {
       console.log('----------------');
       console.log(user[0].id);
       knex('users')
-        .update(user)
-        .where('id', user.id)
+        .update(user[0].amount_spent)
+        .where('id', user[0].id)
         .then(newUser => console.log(newUser));
     });
 });
