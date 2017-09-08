@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     .select('*')
     .where('name', body.name)
     .then(user => {
-      user[0].amount_spent = String(Number(req.body.amount) + Number(user[0].amount_spent));
+      user[0].amount_spent = Number(req.body.amount) + Number(user[0].amount_spent);
       console.log(user[0]);
       console.log('----------------');
       console.log(user[0].id);
@@ -39,16 +39,17 @@ router.post('/', (req, res) => {
       //   // .catch(err => console.log(err))
 
       knex('users')
-        .update(user[0].amount_spent)
-        .returning([
-          'name',
-          'amount_spent',
-          'amount_owed',
-          'paid',
-          'image_url'
-        ])
+        // .update(user[0].amount_spent)
+        // .returning([
+        //   'name',
+        //   'amount_spent',
+        //   'amount_owed',
+        //   'paid',
+        //   'image_url'
+        // ])
+        .select('*')
         .where('id', user[0].id)
-        .then(updatedUser => res.send(updatedUser))
+        .then(updatedUser => console.log(updatedUser))
         .catch(err => console.error(err));
     });
 });
