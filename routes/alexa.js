@@ -13,12 +13,18 @@ router.post('/', (req, res) => {
   body.name = body.name[0].toUpperCase() + body.name.slice(1);
   body.trip = body.trip[0].toUpperCase() + body.trip.slice(1);
   console.log(body);
-
+  // 249.81
   // res.send(req.body);
   knex('users')
     .select('*')
     .where('name', body.name)
-    .then(user => console.log(user))
+    .then(user => {
+      user.amount_spent += Number(req.body.amount);
+      knex('users')
+        .update(user)
+        .where('id', user.id)
+        .then(newUser => console.log(newUser));
+    });
 });
 
 
