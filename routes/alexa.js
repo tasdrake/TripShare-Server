@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
           'amount_spent',
         ])
         .then(updatedUser => {
-          // fetch()
+          updatedUser.amount = body.amount;
           res.send(updatedUser);
         })
         .catch(err => console.error(err));
