@@ -34,7 +34,8 @@ router.post('/', (req, res) => {
           'paid',
           'image_url'
         ])
-        .then(newUser => console.log(newUser));
+        .then(newUser => console.log(newUser))
+        .catch(err => console.log(err))
     });
 });
 
