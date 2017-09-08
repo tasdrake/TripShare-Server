@@ -30,12 +30,12 @@ router.post('/', (req, res) => {
         .where('name', body.name)
         // .where('id', user[0].id)
         .update(user[0].amount_spent)
-        .returning([
-          'name',
-          'amount_spent'
-        ])
-        .then(newUser => console.log(newUser))
-        .catch(err => console.log(err))
+        // .returning([
+        //   'name',
+        //   'amount_spent'
+        // ])
+        // .then(newUser => console.log(newUser))
+        // .catch(err => console.log(err))
     });
 });
 
