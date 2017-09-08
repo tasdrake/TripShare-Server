@@ -26,6 +26,13 @@ router.post('/', (req, res) => {
       knex('users')
         .update(user[0].amount_spent)
         .where('id', 1)
+        .returning([
+          'name',
+          'amount_spent',
+          'amount_owed',
+          'paid',
+          'image_url'
+        ])
         .then(newUser => console.log(newUser));
     });
 });
