@@ -6,20 +6,20 @@ There may be times when you have not input all receipts when you return home, so
 
 
 Users start off by either logging in with Facebook to create or edit an existing trip, or my continuing with the app to see any active trips.
-[Login](readme/login.png)
+![Login](readme/login.png)
 
 Users are able to search through all active trips, or create a new trip if they have already logged in.
-[search trips](readme/tripList.png)
+![search trips](readme/tripList.png)
 
 Once a trip has been selected, a list of all users on that trip will be displayed.  Only the creator of the trip is able to add people to a trip.
-[people](readme/list.png)
+![people](readme/list.png)
 
 To add a receipt, you tap on the person who you are adding money to.  There you can either add in the amount manually, or choose to take a picture of the receipt.
 
 If you take a picture, your image will be processed using Google Cloud Vision OCR, and the total amount spent will be auto filled on the previous screen.
-[taking a picture of a receipt](readme/camera.png)
-[adding an amount](readme/add.png)
+![taking a picture of a receipt](readme/camera.png)
+![adding an amount](readme/add.png)
 
 Once the trip has been completed, you are able to see totals for each person on the trip.  Green amounts are money owed to people, and red is amounts that people owe.  These amounts are determined by the individual cost, and if the users spent more or less than that amount.  As the trip creator, you are the only one that is able to mark someone down as having paid.
-[total amount spent](readme/totals.png)
-[confirm paid](readme/confirm.png)
+![total amount spent](readme/totals.png)
+![confirm paid](readme/confirm.png)
