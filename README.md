@@ -1,5 +1,5 @@
 # TripShare Server
-Server: https://github.com/tasmandrake/Capstone
+Native App: https://github.com/tasmandrake/TripShare
 
 It can be difficult to manage group costs while going on trips with a large number of friends and family.  Trip Share allows users to create a shared platform where group members are invited and spending can be managed. During the trip, members can take a picture of a receipt to record how much they spent.  When the trip is over, each person on the trip can see how much they owe or how much they will get back.  Once all users have paid, the trip can be ended and deleted.
 
